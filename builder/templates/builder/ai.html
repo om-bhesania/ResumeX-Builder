@@ -1,0 +1,100 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<h1 style="text-align:center;margin-top:20px">Search Prompts</h1>
+
+<!-- Search Prompts -->
+<h4 style="text-align:center; color:#3E3E3EAE;">some example prompts</h4>
+<div class="prompt-buttons">
+  <button onclick="handleClick('Help Me Write About me for my resume in 100 words')">Help Me Write About me for my resume</button>
+  <button onclick="handleClick('Help me write taglines for my resume in [replace with your job/occupation] ')">Help me write taglines for my resume in [replace with your job/occupation]</button>
+  <button onclick="handleClick('some technical skills [replace with your field/occupation/education] for my resume in 100 words')">some technical skills [replace with your field/occupation/education] for my resume</button>
+  <!-- Add more predefined prompts as needed -->
+</div>
+
+<!-- Chat Output -->
+<div id="chat-output" class="chat-output" style="color:black;"><h2>Output: </h2></div>
+
+
+<!-- Search Input -->
+<div class="input-container">
+    <input type="text" id="prompt-input" class="prompt-input" placeholder="Enter your search and please wait...." onkeydown="handleKeyDown(event)">
+    <i class="fa fa-paper-plane"  onclick="sendMessage()" style="cursor:pointer;"></i>
+</div>
+
+
+<div id="please-wait" style="display: none;">
+    <p>Please wait...</p>
+    <div class="loader"></div>
+  </div>
+<script>
+
+
+    // Function to handle button click event
+    function handleClick(prompt) {
+      document.getElementById("prompt-input").value = prompt;
+    }
+  
+    // Function to handle sending the user input
+    function sendMessage() {
+      var inputElement = document.getElementById("prompt-input");
+      var userMessage = inputElement.value.trim();
+  
+      if (userMessage !== '') {
+        // Append the user message to the chat output
+        appendMessage('user', userMessage);
+  
+        // Send the user message to the server for processing
+        fetch('/chat/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: 'user_input=' + encodeURIComponent(userMessage)
+        })
+        .then(response => response.json())
+        .then(data => {
+          var generatedResponse = data.response;
+          // Append the generated response to the chat output
+          appendMessage('bot', generatedResponse);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+  
+        // Clear the input box
+        inputElement.value = '';
+      }
+    }
+  
+    // Function to append a message to the chat output
+    function appendMessage(sender, message) {
+      var chatOutput = document.getElementById('chat-output');
+      var messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      messageElement.classList.add(sender);
+      messageElement.innerText = message;
+      chatOutput.appendChild(messageElement);
+    }
+    function handleKeyDown(event) {
+        if (event.keyCode === 13) {
+          // Check if the Enter key was pressed
+          sendMessage();
+        }
+      }
+  // Function to show "Please wait..." message
+  function showPleaseWait() {
+    var pleaseWaitElement = document.getElementById('please-wait');
+    pleaseWaitElement.style.display = 'block';
+  }
+
+  // Function to hide "Please wait..." message
+  function hidePleaseWait() {
+    var pleaseWaitElement = document.getElementById('please-wait');
+    pleaseWaitElement.style.display = 'none';
+  }
+  </script>
+{% endblock %}

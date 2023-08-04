@@ -1,0 +1,59 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+ 
+
+<h1 class="heading-aboutUs">About Us</h1>
+<div class="aboutus-container">
+    <img class="about-img" src="{% static 'img/about.avif' %}">
+   <p class="aboutus"> ResumeX is a leading resume maker company dedicated to helping individuals create professional resumes that stand out in today's competitive job market. Our platform offers a user-friendly and efficient way for job seekers to build compelling resumes that highlight their skills, experience, and achievements.
+At ResumeX, we understand the importance of a well-crafted resume in making a positive first impression on potential employers. We strive to empower job seekers by providing them with the tools and resources needed to create outstanding resumes that effectively showcase their unique qualifications.</p>
+</div>
+<section class="container">
+  <h2>Our Sevices</h2>
+  <div class="row">
+    <div class="service">
+      <i class="ri-macbook-line"></i>
+      <h3>Easy-to-Use Resume Builder</h3>
+      <p>Our intuitive resume builder simplifies the resume creation process. Users can choose from a variety of customizable templates and easily enter their information, ensuring a polished and professional result.</p>
+    </div>
+    <div class="service">
+      <i class="ri-store-3-line"></i>
+      <h3>Tailored Resume Templates</h3>
+      <p>We offer a wide range of professionally designed resume templates to suit various industries and job roles. Each template is carefully crafted to present information in a visually appealing and organized manner.</p>
+    </div>
+    <div class="service">
+      <i class="ri-database-2-line"></i>
+      <h3>Customization Options</h3>
+      <p> ResumeX allows users to personalize their resumes according to their preferences. They can modify fonts, colors, and layout, ensuring their resume reflects their individual style and personality.</p>
+    </div>
+    <div class="service">
+      <i class="ri-android-line"></i>
+      <h3>Section Customization</h3>
+      <p>Our platform enables users to add and customize sections based on their specific needs. Whether it's highlighting skills, work experience, education, or certifications, users can effortlessly tailor their resumes to showcase their strengths.</p>
+    </div>
+    <div class="service">
+      <i class="ri-account-box-line"></i>
+      <h3>Professional Tips and Examples</h3>
+      <p>Our platform provides valuable insights and tips for resume writing, ensuring users have access to the latest best practices. We also offer a collection of real-life resume examples across different industries, allowing users to draw inspiration and make informed decisions.</p>
+    </div>
+    <div class="service">
+      <i class="ri-hand-coin-line"></i>
+      <h3>Multiple File Formats</h3>
+      <p>Once users have created their resumes, they can easily download them in various file formats, such as PDF, Word, or plain text, making it convenient to share their resumes with potential employers.</p>
+    </div>
+  </div>
+</section>
+
+<div class="aboutus-container top-padding">
+  <p class="aboutus bottom">At <span class="resumeX">ResumeX</span>, we are committed to helping job seekers make a strong impression with their resumes. We strive to empower individuals by providing them with the tools, guidance, and resources needed to create resumes that effectively showcase their qualifications, increase their chances of landing interviews, and ultimately secure their desired career opportunities.
+        Choose ResumeX and take the first step towards a successful and rewarding career.
+    </p>
+</div>
+{% endblock %}

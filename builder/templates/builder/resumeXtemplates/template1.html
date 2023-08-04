@@ -1,0 +1,319 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/template1.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<div id="resume">
+<div class="wrapper">
+    <div class="intro">
+      <div class="profile">
+        <div class="photo">
+          <img id="profileImage" src="https://i.imgur.com/zh9eNsh.jpg" onclick="enableEdit(this)">
+          <input id="imageUpload" type="file" accept="image/*" style="display: none;"  onchange="handleImageUpload(event)">
+          
+        </div>
+        <div class="bio">
+          <h1 class="name" onclick="enableEdit(this)">Chih-Hsiang Chen</h1>
+          <p class="profession" onclick="enableEdit(this)">Front-end Developer</p>
+        </div>
+      </div>
+      <div class="intro-section about">
+        <h1 class="title"onclick="enableEdit(this)">about me</h1></br>
+        <p class="paragraph"onclick="enableEdit(this)">
+          Hi everyone, I am a web front-end developer, graduated from NTHU, Taiwan and my major is CS. I recently try my
+          best to improve my skills on web front-end. My favorite thing is to observe others' portfolio.
+        </p>
+      </div></br>
+      <div class="intro-section contact">
+        <h1 class="title"onclick="enableEdit(this)">Contact</h1>
+        <div class="info-section"onclick="enableEdit(this)">
+          <i class="fas fa-phone"onclick="enableEdit(this)"></i>
+          <span>(+886)888-888-888</span>
+        </div>
+        <div class="info-section">
+          <i class="fas fa-map-marker-alt"></i>
+          <span onclick="enableEdit(this)">Kaoshiung, Taiwan</span>
+        </div>
+        <div class="info-section">
+          <i class="fas fa-paper-plane"></i>
+          <span onclick="enableEdit(this)">chih.hsi.chen@gmail.com</span>
+        </div>
+        <div class="info-section link">
+          <i class="fab fa-facebook"></i>
+            <span onclick="enableEdit(this)">Chih-Hsiang Chen</span>
+        </div>
+      </div>
+      <div class="intro-section follow">
+        <h1 class="title">Follow</h1>
+        <div class="info-section link">
+          <i class="fab fa-github"></i>
+          
+            <span onclick="enableEdit(this)">chih-hsi-chen@github</span>
+           
+        </div>
+        <div class="info-section link">
+          <i class="fab fa-codepen"></i>
+         
+            <span onclick="enableEdit(this)">codepen.io</span>
+          
+        </div>
+        <div class="info-section link">
+          <i class="fab fa-medium"></i>
+          
+            <span onclick="enableEdit(this)">lore ipsum.</span>
+           
+        </div>
+      </div>
+    </div>
+    <div class="detail">
+      <div class="detail-section edu">
+        <div class="detail-title">
+          <div class="title-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <span onclick="enableEdit(this)">Eduation</span>
+        </div>
+        <div class="detail-content">
+          <div class="timeline-block">
+            <h1 onclick="enableEdit(this)">Department of Computer Science</h1>
+            <p onclick="enableEdit(this)">National Tsing Hua University, Taiwan</p>
+            <time onclick="enableEdit(this)">2015 - 2019</time>
+          </div>
+          <div class="timeline-block">
+            <h1 onclick="enableEdit(this)">Institute of Computer Science and Engineering</h1>
+            <p onclick="enableEdit(this)">National Chiao Tung University, Taiwan</p>
+            <time onclick="enableEdit(this)">2020 - present</time>
+          </div>
+        </div>
+      </div>
+      <div class="detail-section pg-skill">
+        <div class="detail-title" onclick="enableEdit(this)">
+          <div class="title-icon" onclick="enableEdit(this)">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <span onclick="enableEdit(this)">Programming skills</span>
+          <span class="edit-icon" onclick="showEditInput(this)">  <i class="fas fa-pencil 2xl pencil"></i> </span>
+        </div>
+        <div class="detail-content" onclick="enableEdit(this)">
+          <ul class="pg-list" onclick="enableEdit(this)">
+            <li>
+              <span onclick="enableEdit(this)">HTML5</span>
+              <div class="sb-skeleton">
+                <div id="html-skillbar" class="skillbar" style="--pgbar-length: 90%"></div>
+              </div>
+            </li>
+            <li>
+              <span onclick="enableEdit(this)">CSS3</span>
+              <div class="sb-skeleton">
+                <div id="css-skillbar" class="skillbar" style="--pgbar-length: 75%"></div>
+              </div>
+            </li>
+            <li>
+              <span onclick="enableEdit(this)">Javascript</span>
+              <div class="sb-skeleton">
+                <div id="js-skillbar" class="skillbar" style="--pgbar-length: 70%"></div>
+              </div>
+            </li>
+            <li>
+              <span onclick="enableEdit(this)">JQuery</span>
+              <div class="sb-skeleton">
+                <div id="jquery-skillbar" class="skillbar" style="--pgbar-length: 50%"></div>
+              </div>
+            </li>
+            <li>
+              <span onclick="enableEdit(this)">NodeJS</span>
+              <div class="sb-skeleton">
+                <div id="nodejs-skillbar" class="skillbar" style="--pgbar-length: 70%"></div>
+              </div>
+            </li>
+            <li>
+              <span onclick="enableEdit(this)">ReactJS</span>
+              <div class="sb-skeleton">
+                <div id="reactjs-skillbar" class="skillbar" style="--pgbar-length: 75%"></div>
+              </div>
+            </li>
+            <li>
+              <span onclick="enableEdit(this)">VueJS</span>
+              <div class="sb-skeleton">
+                <div id="vuejs-skillbar" class="skillbar" style="--pgbar-length: 40%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="detail-section tool-skill" onclick="enableEdit(this)">
+        <div class="detail-title" onclick="enableEdit(this)">
+          <div class="title-icon" onclick="enableEdit(this)">
+            <i class="fas fa-tools" onclick="enableEdit(this)"></i>
+          </div>
+          <span onclick="enableEdit(this)">Development Tools</span>
+          {% comment %} <span class="edit-icon" onclick="showEditInput(this)">  <i class="fas fa-pencil 2xl pencil"></i> </span> {% endcomment %}
+        </div>
+        <div class="detail-content" onclick="enableEdit(this)">
+          <ul class="tool-list" onclick="enableEdit(this)">
+            <li>
+              <svg viewbox="0 0 100 100">
+                <circle cx="50" cy="50" r="45"></circle>
+                <circle id="ps-circle" class="cbar" cx="50" cy="50" r="45" style="--percent: 0.6"></circle>
+              </svg>
+              <span class="tl-name">Photoshop</span>
+              <span id="ps-percent" class="tl-exp">60%</span>
+            </li>
+            <li>
+              <svg viewbox="0 0 100 100">
+                <circle cx="50" cy="50" r="45"></circle>
+                <circle id="sublime-circle" class="cbar" cx="50" cy="50" r="45" style="--percent: 0.8"></circle>
+              </svg>
+              <span class="tl-name">Sublime</span>
+              <span id="sublime-percent" class="tl-exp">80%</span>
+            </li>
+            <li>
+              <svg viewbox="0 0 100 100">
+                <circle cx="50" cy="50" r="45"></circle>
+                <circle id="git-circle" class="cbar" cx="50" cy="50" r="45" style="--percent: 0.7"></circle>
+              </svg>
+              <span class="tl-name">Git</span>
+              <span id="git-percent" class="tl-exp">70%</span>
+            </li>
+            <li>
+              <svg viewbox="0 0 100 100">
+                <circle cx="50" cy="50" r="45"></circle>
+                <circle id="npm-circle" class="cbar" cx="50" cy="50" r="45" style="--percent: 0.74"></circle>
+              </svg>
+              <span class="tl-name">NPM</span>
+              <span id="npm-percent" class="tl-exp">74%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="detail-section interests" >
+        <div class="detail-title">
+          <div class="title-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <span>Interests</span>
+        </div>
+        <div class="detail-content">
+          <div class="outer-frame">
+            <ul class="favor-list">
+              <li>
+                <i class="fas fa-gamepad"></i>
+                <span onclick="enableEdit(this)">Game</span>
+              </li>
+               
+              <li>
+                <i class="fas fa-paw"></i>
+                <span onclick="enableEdit(this)">Pet</span>
+              </li>
+               
+              <li>
+                <i class="far fa-headphones-alt"></i>
+                <span onclick="enableEdit(this)">Music</span>
+              </li>
+               
+              <li>
+                <i class="fas fa-book-spells"></i>
+                <span onclick="enableEdit(this)">Self-learning</span>
+              </li>
+               
+              <li>
+                <i class="fas fa-user-edit"></i>
+                <span onclick="enableEdit(this)">Blog</span>
+              </li>
+               
+            </ul>
+          </div>
+        </div>
+         
+      </div>
+    </div>
+  </div> 
+ 
+  <script> 
+    function enableEdit(element) {
+      element.contentEditable = true;
+      element.focus();
+      element.style.borderBottom = "1px dashed red";
+    }
+    function handleImageUpload(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const profileImage = document.getElementById("profileImage");
+        profileImage.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    function updateProgressBar(inputElement) {
+      const value = inputElement.value;
+      const listItem = inputElement.parentNode;
+      const progressBar = listItem.querySelector(".cbar");
+      progressBar.style.setProperty("--percent", value / 100);
+    }
+    function updateSkillBar(skillId, percentage) {
+      const skillbar = document.getElementById(skillId);
+      skillbar.style.setProperty('--pgbar-length', percentage + '%');
+    }
+    function showEditInput(element) {
+      var skillbar = element.parentNode.parentNode.querySelectorAll('.skillbar');
+      skillbar.forEach(function(bar) {
+        var percentage = prompt('Enter the percentage for ' + bar.parentNode.previousElementSibling.textContent + ':');
+        if (percentage) {
+          bar.style.setProperty('--pgbar-length', percentage + '%');
+        }
+      });
+    }
+    function showEditInput(element) {
+      var circles = element.parentNode.parentNode.querySelectorAll('.cbar');
+      circles.forEach(function(circle) {
+        var percentage = prompt('Enter the percentage for ' + circle.parentNode.querySelector('.tl-name').textContent + ':');
+        if (percentage) {
+          circle.style.setProperty('--percent', parseFloat(percentage) / 100);
+          circle.parentNode.querySelector('.tl-exp').textContent = percentage + '%';
+        }
+      });
+    }
+     function deleteSection(sectionElement) {
+      sectionElement.parentNode.removeChild(sectionElement);
+    }
+    function addCustomSection(button) {
+      const template = document.getElementById("custom-section-template");
+      const clone = template.cloneNode(true);
+      clone.removeAttribute("id");
+      clone.style.display = "block";
+      const sectionTitle = clone.querySelector(".section-title");
+      const paragraph = clone.querySelector(".paragraph");
+      sectionTitle.textContent = "Custom Section";
+      paragraph.textContent = "Custom content";
+      button.parentNode.parentNode.insertBefore(clone, button.parentNode.nextSibling);
+    }
+    
+    function deleteSection(sectionElement) {
+      sectionElement.parentNode.removeChild(sectionElement);
+    }
+    function enableEdit(element) {
+      const tagName = element.tagName.toLowerCase();
+      if (tagName === 'img') {
+        document.getElementById('imageUpload').click();
+      } else {
+        element.contentEditable = true;
+        element.focus();
+        element.style.borderBottom = "1px dashed red";
+      }
+    }
+  
+    function handleImageUpload(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = function (event) {
+        const profileImage = document.getElementById("profileImage");
+        profileImage.src = event.target.result;
+      };
+  
+      reader.readAsDataURL(file);
+    }
+  </script>   
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login-signup.css' %}">
+<div style="margin-top:150px;"></div>
+<div id="login-popup" class="login-popup">
+
+
+  <form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <div class="con">
+      <header class="head-form">
+        <h2>Sign Up</h2>
+      </br>
+  {% if message %}
+  <p id="message">{{ message }}</p>
+{% endif %}
+      </header>
+      <br>
+      <div class="field-set">
+        <span class="input-item">
+          <i class="fa fa-user-circle"></i>
+        </span>
+        <input class="form-input" id="name" name="name" type="text" placeholder="UserName" required>
+        <br>
+        <span class="input-item">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <input class="form-input" id="email" name="email" type="text" placeholder="Email" required>
+        <br>
+        <span class="input-item">
+          <i class="fa fa-phone"></i>
+        </span>
+        <input class="form-input" id="contact" name="contact" type="number" placeholder="contact" required>
+        <br>
+        <span class="input-item">
+          <i class="fa fa-key"></i>
+        </span>
+        <input class="form-input" type="password" name="password" id="password" placeholder="Password" required>
+        <span>
+          <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+        </span>
+        <br>
+        <span class="input-item">
+          <i class="fa fa-key"></i>
+        </span>
+        <input class="form-input" type="password" name="password" id="password" placeholder="Confirm Password" required>
+        <br>
+        <button type="submit" class="log-in">Sign Up</button>
+      </div>
+      <div class="other">
+        <button class="btn submits frgt-pass">Forgot Password</button>
+        <button class="btn submits sign-up" onClick=location.href="{% url 'login' %}">Log In
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  // Check if the user is already registered
+  const isRegistered = {{ user.is_authenticated|yesno:"true,false" }};
+
+  // Display the message only if the user is registered
+  if (isRegistered) {
+    const message = document.getElementById('message');
+    if (message) {
+      message.style.color = 'red';
+      message.style.fontSize = '15px';
+    }
+  }
+
+  // Remove message on click or keypress
+  const removeMessage = () => {
+    const message = document.getElementById('message');
+    if (message) {
+      message.remove();
+    }
+  };
+
+  window.addEventListener('click', removeMessage);
+  window.addEventListener('keydown', removeMessage);
+
+  // Remove message after 5 seconds
+  setTimeout(() => {
+    const message = document.getElementById('message');
+    if (message) {
+      message.remove();
+    }
+  }, 5000);
+</script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+ 
+<div class="container my-3">
+    <div class="background">
+        <div class="container">
+            {% if message %}
+            <p id="message">{{ message }}</p>
+            {% endif %}
+            <div class="screen">
+                
+       
+        <div class="screen-body">
+            
+          <div class="screen-body-item left">
+          
+            <div class="app-title">
+              <span>CONTACT</span>
+              <span>US</span>
+            </div>
+            <div class="app-contact">Om Bhesania - D21DCS158 - DEPSTAR</div>
+          </div>
+          <div class="screen-body-item">
+            <form method="post" action="{% url 'contact_view' %}">
+              {% csrf_token %}
+              <div class="app-form-group">
+                  <input class="app-form-control" placeholder="NAME" name="name" required>
+              </div>
+              <div class="app-form-group">
+                  <input class="app-form-control" placeholder="EMAIL" name="email" required>
+              </div>
+              <div class="app-form-group">
+                  <input class="app-form-control" placeholder="CONTACT NO" name="phone" required>
+              </div>
+              <div class="app-form-group message">
+                  <input class="app-form-control" placeholder="MESSAGE" name="content" required>
+              </div>
+              <div class="app-form-group buttons">
+                  <button class="app-form-button" type="button">CANCEL</button>
+                  <button class="app-form-button" type="submit">SEND</button>
+              </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+</div>
+
+<script> 
+    const isRegistered = {{ user.is_authenticated|yesno:"true,false" }};
+  
+    // Display the message only if the user is registered
+    if (isRegistered) {
+      const messageElement = document.getElementById('message');
+      if (messageElement) {
+        messageElement.style.color = 'Black';
+        messageElement.style.fontSize = '20px';
+        messageElement.style.display = 'flex'
+        messageElement.style.justifyContent = 'center'
+        messageElement.style.alignItems = 'center'
+        messageElement.style.marginTop = '20px'
+      }
+    }
+  
+    // Remove message on click or keypress
+    const removeMessage = () => {
+      const messageElement = document.getElementById('message');
+      if (messageElement) {
+        messageElement.remove();
+      }
+    };
+  
+    window.addEventListener('click', removeMessage);
+    window.addEventListener('keydown', removeMessage);
+  
+    // Remove message after 5 seconds
+    setTimeout(() => {
+      const messageElement = document.getElementById('message');
+      if (messageElement) {
+        messageElement.remove();
+      }
+    }, 5000);</script>
+{% endblock %}

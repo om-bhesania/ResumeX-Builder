@@ -1,0 +1,14 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>  </style>
+<h1>Hello process_docx </h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="file" name="file" accept=".docx" required>
+    <button type="submit">Upload</button>
+</form>
+
+{% endblock %}

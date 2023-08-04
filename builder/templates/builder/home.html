@@ -1,0 +1,45 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="container-cta">
+  <div class="cta-text">
+    <h1>The Best Free Online Resume Builder</h1>
+    <p>A Quick and Easy Way to Create Your Professional Resume. 30+ Professional Resume Templates Choose from over thirty modern and professional templates. All of which can be customized to your liking. Fast and Easy to Use Our resume builder lets you easily and quickly create a resume using our resume wizard.</p>
+  </div>
+  <button onClick=location.href="{% url 'builder'%}" class="rolling_tiles top50">Get Started</button>
+  <div id="cta-img">
+    <img class="cta-img top50" src="{% static 'img/homepag-bg.svg' %}">
+  </div>
+</div>
+<h1 style="text-align:center; " class="top-padding">A Free, Quick and Easy Way to Create Your Professional Resume.</h1>
+<div class="other-details">
+  <div class="cta-text details">
+    <ul>
+      <li>
+       <h2><i class="fas fa-certificate"></i> 30+ Professional Resume Templates</h2> 
+        <p> Choose from over thirty modern and professional templates. All of which can be customized to your liking.</p>
+      </li>
+      
+      <li>
+        <h2><i class="fas fa-bolt"></i> Fast and Easy to Use</h2> 
+        <p> Our free resume builder lets you easily and quickly create a resume using our resume wizard.</p>
+      </li>
+      
+      <li>
+        <h2><i class="fas fa-paper-plane"></i> Robust Text Editor</h2> 
+        <p>Our text editor has everything you need to customize your resume. Choose different fonts, sizes, bullets and much more.</p>
+      </li>
+      
+      <li>
+        <h2><i class="fas fa-download"></i> Download your resume as PDF</h2> 
+        <p>Download your resume and send it straight to the hiring manager. Whatever format you choose, we’ve got you covered.</p>
+      </li>
+      
+    </ul>
+  </div>
+  <div id="cta-img">
+    <img class="cta-img" src="{% static 'img/other-details.svg' %}">
+  </div>
+</div>
+{% endblock %}

@@ -54,7 +54,7 @@ def edit_product(request, pk):
 # ChatGPT integratoin
 
 # Configure your OpenAI API key
-openai.api_key = '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'
+openai.api_key = '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'
 
 @csrf_exempt
 def generate_chat_response(request):

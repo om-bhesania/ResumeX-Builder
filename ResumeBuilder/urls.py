@@ -22,7 +22,7 @@ urlpatterns = [
     path('process/', views.process, name='process'),
     path('upload/', views.document_upload, name='document_upload'), 
     path('contact/', views.contact, name='contact'),
-    path('template1/', views.template1, name='template1'),
+    path('template1/', views.template1, name='template'),
     path('contact_view/', views.contact_view, name='contact_view'),
     path('product/<int:pk>/editResume', views.edit_product, name='edit_product'),
 ] 

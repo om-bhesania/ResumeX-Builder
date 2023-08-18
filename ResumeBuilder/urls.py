@@ -26,5 +26,5 @@ urlpatterns = [
     path('contact_view/', views.contact_view, name='contact_view'),
     path('product/<int:pk>/editResume', views.edit_product, name='edit_product'),
 ] 
-
- 
+urlpatterns += static(settings.STATIC_URL,documets_roo=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL,documets_roo=settings.MEDIA_ROOT)
